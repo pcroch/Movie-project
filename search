@@ -1,0 +1,109 @@
+
+#########################################
+# 3) Search movie_book function		#
+#########################################
+search()
+{
+RET=menu_main
+while true
+do
+clear
+#echo " Others menu will be added later for the others levels of the programs when the basic tools  will be viable."
+#r )  return to previous menu
+cat << "EOT"
+-------------------------------------
+        SEARCH MENU
+-------------------------------------
+
+Please select the variable to search?
+
+
+a )  Name
+b )  Date
+c )  Type
+d )  Rate
+
+
+r )  return to previous menu
+s )  SETTINGS
+
+Please type a choiceletter (from the above choices) then press the RETURN key
+
+EOT
+
+read -n 2 NUMVAR1
+clear
+case "$NUMVAR1" in
+#Here we are supposed to call a function to perform the programs
+[aA]*) read -p "Nom du film? " NAME
+
+#Print the line chosen ( old way not very good looking) but I keep it for the technical part just in case
+#awk  -v pat="$NAME" 'BEGIN {FS = ","} $1~pat{ print $0 }' $BOOK
+
+	#test if the variable lenght is equal to zero. If yes, start again the function search if not run the sub function display.
+	if [ "${#NAME}" == '0' ]
+	then 
+
+		echo "You have written nothing. Try harder!"
+		echo ""
+  		search
+	else
+		
+		#run "display" function
+		whileread
+	fi
+;;
+[bB]*) read -p "la Date du film? " DATE
+	if [ "${#DATE}" == '0' ]
+	then 
+
+		echo "You have written nothing. Try harder!"
+		echo ""
+  		search
+	else
+		
+
+		whileread
+	fi
+;;
+[cC]*) read -p "le type du film? " TYPE
+	if [ "${#TYPE}" == '0' ]
+	then 
+
+		echo "You have written nothing. Try harder!"
+		echo ""
+  		search
+	else
+		
+
+		whileread
+	fi
+
+;;
+[dD]*) read -p "la note du film? " RATE
+	if [ "${#RATE}" == '0' ]
+	then 
+
+		echo "You have written nothing. Try harder!"
+		echo ""
+  		search
+	else
+		
+
+		whileread
+	fi	
+
+;;
+[rR]*) main_menu
+;;
+[sS]*) echo "Working in progress" 
+;;
+
+*)      echo "Please choose an option which is displayed on the menu" 
+;;
+esac
+echo ""
+echo "PRESS RETURN FOR THE MENU"
+read dummy
+done
+}

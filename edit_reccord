@@ -1,0 +1,222 @@
+#########################################
+# 4) Edit Record			#
+#########################################
+#https://github.com/kkslider/bash-scripts/blob/master/addressbook.sh very good example
+#https://askubuntu.com/questions/20414/find-and-replace-text-within-a-file-using-commands
+#https://stackoverflow.com/questions/9142131/replace-a-word-with-another-in-bash
+#https://www.oakton.edu/user/2/rjtaylor/cis218/Handouts/sed.txt Commande SED sous toutes ses formes
+# https://stackoverflow.com/questions/45444988/sed-editing-specific-column-and-row-in-a-csv-file solution editing
+
+edit_reccord() 
+#if the name isn't exat then ask again but do not change like delete function!!! ( I did I meant???)
+{
+RET=menu_main
+while true
+do
+clear
+#echo " Others menu will be added later for the others levels of the programs when the basic tools  will be viable."
+#r )  return to previous menu
+cat << "EOT"
+-------------------------------------
+        EDIT MENU
+-------------------------------------
+
+Please select which string do you want to  edit?
+
+a )  Name
+b )  Date
+c )  Type
+d )  Rate
+
+r )  return to previous menu
+s )  SETTINGS
+
+Please type a choiceletter (from the above choices) then press the RETURN key
+
+EOT
+
+read NUMVAR1
+clear
+case "$NUMVAR1" in
+#Here we are supposed to call a function to perform the programs
+[aA]*) read -p "Name of the movie? " NAME
+#NAME
+#same beginning as delete function.
+#if name is empty then do again the 'delete function==> infinite loop
+	if [ "${#NAME}" == '0' ] 
+	then
+
+	echo "You have written nothing. Try harder!"
+	echo ""
+	
+	else
+		if [ "$NAME" = "$(grep -oE "$NAME" "$BOOK")" ]
+
+		then
+	
+		#Print the line chosen
+		awk  -v pat="$NAME" 'BEGIN {FS = ","} $1~pat{ print $0 }' $BOOK
+ 		echo " "
+		read -p "Please writte the new movie’s name? " ANSWER
+
+		sed -i /^"$NAME",/s/[^,]*/"$ANSWER"/1 "$BOOK"
+
+
+		#Print the new line (why does it not appear?)
+
+		#awk  -v pat="$NAME" 'BEGIN {FS = ","} $1~pat{ print $0 }' $BOOK 
+
+
+		else
+		echo "Wrong name. Please try again!"
+		echo ""
+		display_DB
+		
+		fi
+		#test if null see above
+	fi
+
+	
+;;
+[bB]*) read -p "Name of the movie? " NAME
+#DATE
+#same beginning as delete function.
+#if name is empty then do again the 'delete function==> infinite loop
+	if [ "${#NAME}" == '0' ] 
+	then
+
+	echo "You have written nothing. Try harder!"
+	echo ""
+	
+	else
+		if [ "$NAME" = "$(grep -oE "$NAME" "$BOOK")" ]
+
+		then
+
+		#Print the line chosen
+		awk  -v pat="$NAME" 'BEGIN {FS = ","} $1~pat{ print $0 }' $BOOK
+ 		echo " "
+		read -p "Please writte the new movie’s date? " ANSWER
+ 
+		sed -i /^"$NAME",/s/[^,]*/"$ANSWER"/2 "$BOOK"
+
+
+		#Print the new line (why does it not appear?)
+
+		#awk  -v pat="$NAME" 'BEGIN {FS = ","} $1~pat{ print $0 }' $BOOK 
+
+
+		else
+		echo "Wrong name. Please try again!"
+		echo ""
+		display_DB
+		
+		fi
+		#test if null see above
+	fi
+	
+
+;;
+[cC]*) read -p "Name of the movie? " NAME
+#DATE
+#same beginning as delete function.
+#if name is empty then do again the 'delete function==> infinite loop
+	if [ "${#NAME}" == '0' ] 
+	then
+
+	echo "You have written nothing. Try harder!"
+	echo ""
+	
+	else
+		if [ "$NAME" = "$(grep -oE "$NAME" "$BOOK")" ]
+
+		then
+	
+		#Print the line chosen
+		awk  -v pat="$NAME" 'BEGIN {FS = ","} $1~pat{ print $0 }' $BOOK
+ 		echo " "
+		read -p "Please writte the new movie’s type? " ANSWER
+
+		sed -i /^"$NAME",/s/[^,]*/"$ANSWER"/3 "$BOOK"
+
+
+		#Print the new line (why does it not appear?)
+
+		#awk  -v pat="$NAME" 'BEGIN {FS = ","} $1~pat{ print $0 }' $BOOK 
+
+
+		else
+		echo "Wrong name. Please try again!"
+		echo ""
+		display_DB
+		
+		fi
+		#test if null see above
+	fi
+
+;;
+[dD]*) read -p "Name of the movie? " NAME
+#RATE
+#same beginning as delete function.
+#if name is empty then do again the 'delete function==> infinite loop
+	if [ "${#NAME}" == '0' ] 
+	then
+
+	echo "You have written nothing. Try harder!"
+	echo ""
+	
+	else
+		if [ "$NAME" = "$(grep -oE "$NAME" "$BOOK")" ]
+
+		then
+
+		#Print the line chosen
+		awk  -v pat="$NAME" 'BEGIN {FS = ","} $1~pat{ print $0 }' $BOOK
+ 		echo " "
+		read -p "Please writte the new movie’s rate? " ANSWER
+
+		sed -i /^"$NAME",/s/[^,]*/"$ANSWER"/4 "$BOOK"
+
+
+		#Print the new line (why does it not appear?)
+
+		#awk  -v pat="$NAME" 'BEGIN {FS = ","} $1~pat{ print $0 }' $BOOK 
+
+
+		else
+		echo "Wrong name. Please try again!"
+		echo ""
+		display_DB
+		
+		fi
+		#test if null see above
+	fi
+
+;;
+[rR]*) main_menu
+;;
+[sS]*) settings
+;;
+
+*)      echo "Please choose an option which is displayed on the menu" 
+;;
+esac
+echo ""
+echo "PRESS RETURN FOR THE MENU"
+read dummy
+done
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

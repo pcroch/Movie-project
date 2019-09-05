@@ -1,0 +1,33 @@
+#########################################
+# 5) Play movie				#
+#########################################
+
+#Codes from A. D. (Thank you :-))
+#Could be imporve with the news code from A. D. ( later perhaps)
+read_movie () {
+   NUMBER=1
+   FNAMEL=()
+   if [ "$KEYWORD" == '' ]; then
+      read -p "select a keyword: " KEYWORD
+   fi
+   for MOVIE in $(find $FILE -iname "*$KEYWORD*")
+   do
+      FNAMEL+=($MOVIE )
+      FNAMES=$(basename $MOVIE )
+      echo "$NUMBER) " $FNAMES
+      let "NUMBER += 1"
+   done
+   read -p "select a file: " SEL
+   if [ "$SEL" == 'q' ]; then
+      return_menu
+   fi
+   SELD=$SEL
+   SEL=$(($SEL-1))
+   echo "($SELD) now playing... ${FNAMEL[$SEL]}"
+   KEYWORD=''
+#The last part of the line allowed vlc to run in background whence the 2>&1.
+ 
+vlc -q "${FNAMEL[$SEL]}" > /dev/null 2 > 1
+   return
+
+}

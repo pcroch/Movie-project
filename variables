@@ -1,0 +1,32 @@
+#########################################
+# 1) Identiying the variables		#
+#########################################
+#https://unix.stackexchange.com/questions/145150/verify-the-length-of-a-variable good simplied command to execute shortly a length test without all the if test ==> to be done
+#https://www.commentcamarche.net/forum/affich-13240967-bash-socker-date-dans-une-variable date variable
+
+IFS=$';'
+FILE="/home/pierre/Vidéos/"
+#repertoire video
+BOOK="/home/pierre/Dropbox/scriptbash/movie_book.csv"
+BOO="/home/pierre/Dropbox/scriptbash/boo.csv"
+NAME=""
+DATE=""
+TYPE=""
+RATE=""
+OK="End of File"
+NUMVAR1=""
+NUMVAR2=""
+ANSWER=""
+NUMBER=""
+ANSWER1=""
+ANSWER2=""
+KEYWORD=""
+MOVIE=""
+SEL=""
+
+#for delete torrent and sub function
+NBJOURS="+7"
+PATHFILES="/home/pierre/Téléchargements"
+TORRENTSFILES="*.torrent"
+SUBFILES="*.sub"
+#----

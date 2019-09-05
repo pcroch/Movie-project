@@ -1,0 +1,63 @@
+
+
+
+
+
+
+
+
+
+
+#########################################
+# 8) help menu 				#
+#########################################
+
+help()
+{
+echo "Working in progress"
+}
+
+
+
+#########################################
+# 9) folder with all the documentation	#
+#########################################
+
+
+
+documentation()
+{
+echo "Working in progress"
+}
+
+
+#########################################
+# 9) Movie to see ( multiple function)	   #
+#########################################
+movietosee()
+{
+echo "Working in progress"
+}
+
+
+#see functionl analysis
+
+
+
+
+
+
+
+
+#########################################
+# 11) program charts	#
+#########################################
+
+charts()
+{
+echo "Working in progress"
+}
+
+
+
+

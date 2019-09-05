@@ -1,0 +1,20 @@
+#########################################
+# 10) Delete torrent				#
+#########################################
+
+#URL link: see gmail
+
+deletetorrent()
+{
+
+#Bring back to the home directory to be sure that we work on the right directory afertwards
+cd /
+
+#URL link: see gmail for explanations
+find $PATHFILES -name $TORRENTSFILES -mtime $NBJOURS -exec rm '{}' ';' -print
+find $PATHFILES -name $SUBFILES -mtime $NBJOURS -exec rm '{}' ';' -print
+#Could be usefull for the zipfile btu dangerous because I could delete an important personal file :/
+
+echo "All the torrents and sub file older than $NBJOURS days have been removed in the download folder!"
+echo " To change the day setting, please go in the settings menu."
+}

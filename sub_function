@@ -1,0 +1,64 @@
+#########################################
+# Sub_Fonction simple			#
+#########################################
+
+#http://lpsc.in2p3.fr/atlas/screpe/pensebete/awk.html
+#https://www.developpez.net/forums/d383700/systemes/linux/shell-commandes-gnu/bash-utilisation-cat-awk-parser-fichier-csv/
+#http://blog.cee.moe/a-brief-introduction-to-grep-awk-and-sed.html
+
+#https://www.youtube.com/watch?v=OecFFZpIkDc example video csv file editing etc..
+# http://www.theunixschool.com/2012/05/shell-read-text-or-csv-file-and-extract.html explication de la video solution !!!!!!!
+
+bye() {
+   echo "Bye..."
+   exit 0
+}
+return_menu() {
+   main_menu
+   
+}
+
+#########################################
+# 3) While read function		#
+#########################################
+
+#Perform a nice display of the output for the search function mainly
+whileread()
+{
+OLDIFS=$IFS
+IFS=","
+
+grep -i "$NAME" "$BOOK" > "$BOO"
+
+#Fake variable to display the datas. I choose a name matching with the output to facilitate the understanding of the codes.
+while read NAME1 DATE1 TYPE1 RATE1
+
+do 
+
+echo -e " \e[1;33m$NAME1 \
+================\e[0m\n\
+Date of release : \t $DATE1\n\
+Type of movie : \t $DATE1\n\
+Rate of the movie : \t $RATE1\n\ "
+
+done < $BOO
+
+IFS=$OLDIFS 
+}
+
+#########################################
+# 4) Clear	 function		#
+#########################################
+
+clear_function()
+{
+echo " press \" c \" to continue "
+				read NUMVAR2
+				if [ "$NUMVAR2" == 'c' ]
+				then
+			clear
+			delete
+				else
+			delete
+				fi
+}

@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# nom |Date de sortie|type de film| note sur 5| remarques ( max 100 cart.)|vu ( y or no |
+
+##########################################################################################################
+## 												        ##
+## Liens utiles    											##
+##													##
+##http://programmingexamples.wikidot.com/bash-scripting#toc5 doc de base			        ##
+##https://github.com/akshar-raaj/Python-Programs/blob/master/address-book.py python example	        ##
+##http://www.lions-wing.net/lessons/database/address.html adresse book bash				##
+##													##
+##												        ##
+##https://rextester.com/l/bash_online_compiler bahs online                                              ##
+##http://jlbicquelet.free.fr/scripts/shell/menus_shell.php   Menu					##
+##								                                        ##
+##########################################################################################################
+
+
+#Fichier configuration
+
+
+
+source variables
+source sub_function
+#All the function have a dedicated txt file to work on!
+
+source search
+source add
+source delete
+source edit_reccord
+source display_DB
+source read_movie
+source deletetorrent
+source settings
+source help_menu
+
+
+source fonction
+source menu
+
+
+
+
+##########################
+## 			##
+## Notes to do list     ##
+##			##
+##########################
+#Error List
+#Liste message erreur
+#fonction modifier?
+#Search movie into fodler founction
+#enter to validate

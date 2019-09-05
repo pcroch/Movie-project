@@ -1,0 +1,52 @@
+#################
+# SETTINGS	#
+#################
+
+settings()
+{
+RET=menu_main
+while true
+do
+clear
+cat << "EOT"
+-------------------------------------
+        MAIN MENU
+-------------------------------------
+
+
+a )  Change the value date of the delette function
+
+
+r )  return to previous menu
+
+
+Please type a choiceletter (from the above choices) then press the RETURN key
+
+EOT
+
+read ANSWER
+clear
+case "$ANSWER" in
+#Here we are supposed to call a function to perform the programs
+[aA]*) read -p "What is the new value date " VVV
+	#export NBJOURS="$VVV"
+   	#echo $NBJOURS
+	echo " Working in progress, it is not yet done"
+	echo "" 
+;;
+[rR]*) main_menu
+;;
+
+*)      echo "Please choose an option which is displayed on the menu" 
+;;
+esac
+echo ""
+echo "PRESS RETURN FOR THE MENU"
+read dummy
+done
+}
+main_menu
+#=========================================================================
+#=========================================================================
+
+

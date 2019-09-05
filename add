@@ -1,0 +1,94 @@
+#########################################
+# 3) add movie function			#
+#########################################
+
+add()
+{
+RET=menu_main
+while true
+do
+clear
+#echo " Others menu will be added later for the others levels of the programs when the basic tools  will be viable."
+#r )  return to previous menu
+cat << "EOT"
+-------------------------------------
+        ADD MENU
+-------------------------------------
+
+What Do you want to do?
+
+a )  Add a movie
+
+r )  return to previous menu
+s )  SETTINGS
+
+Please type a choiceletter (from the above choices) then press the RETURN key
+
+EOT
+
+read NUMVAR2
+clear
+case "$NUMVAR2" in
+#Here we are supposed to call a function to perform the programs
+[aA]*)
+# Ask the user for a name and assign to a variable
+        	read -p "Name of the movie to add? " NAME
+      		echo ""
+
+# Ask the user for a date and assign to a variable
+  		read -p "What is the date of the movie ?" DATE
+		echo ""
+
+# Ask the user for the type (=~kind) of the movie and assign to a variable
+     		read -p "What is the type of the movie ?(only one)" -n 10 TYPE
+		echo ""
+
+# Ask the user for a rate and assign to a variable
+ 	     	read -p "What is the rate of the movie ? (Between 1 to 5)" -n 2 RATE
+		echo ""
+
+# Echo the answers and ask for confirmation
+
+      		echo "Please confirm the addition of a movie into the database (y/n): "
+		echo "" 
+		read -n 2 ANSWER 
+		echo ""
+			if [ "$ANSWER" == 'y' ]
+	
+       			then
+		echo -e "The following movie: $NAME has been added \n"
+# Write the values to the address book
+
+		echo "$NAME , $DATE , $TYPE , $RATE" >>$BOOK
+
+		
+			elif [ "$ANSWER" == 'n' ]
+		
+			then
+# Give the user a message
+            	echo "$NAME  is not saved into the database"
+		return
+			else
+		echo "choose a correct value"
+		echo "$NAME  is not saved into the database"
+		return
+       			fi
+;;
+[rR]*) main_menu
+
+;;
+[sS]*) settings
+;;
+
+*)      echo "Please choose an option which is displayed on the menu" 
+;;
+esac
+echo ""
+echo "PRESS RETURN FOR THE MENU"
+read dummy
+done
+}
+
+#=========================================================================
+#=========================================================================
+

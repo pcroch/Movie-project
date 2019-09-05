@@ -1,0 +1,81 @@
+##########################################
+##-------------------------------------	##
+##        MENUS				##
+##-------------------------------------	##
+##########################################
+
+#trap "echo 'Control-C ne peut plus etre utilise' ; sleep 1 ; clear ; continue " 1 2 3
+
+main_menu()
+{
+RET=menu_main
+while true
+do
+clear
+#echo " Others menu will be added later for the others levels of the programs when the basic tools  will be viable."
+#r )  return to previous menu
+cat << "EOT"
+|--------------------------------------	|
+|              MAIN MENU	    	|
+|--------------------------------------	|
+|					|
+|					|
+| a )  Add				|
+| b )  Modify				|
+| c )  Search				|
+| d )  Delete				|
+| e )  Play				|
+| f )  Display the database		|
+| g )  Clean download file 		|
+| h )  help				|
+|					|	
+|=======================================|
+|					|
+| q )  Quit (Leave this menu program)	|
+| s )  Settings				|
+|					|
+|Please type a choiceletter (from the 	|
+|above choices)then press the RETURN key|
+|					|
+|=======================================|
+EOT
+
+read ANSWER
+clear
+case "$ANSWER" in
+#Here we are supposed to call a function to perform the programs
+[aA]*) add 
+;;
+[bB]*) edit_reccord 
+;;
+[cC]*) search
+;;
+[dD]*) delete
+;;
+[eE]*) read_movie
+;;
+[fF]*) display_DB
+;;
+[gG]*) deletetorrent
+;;
+[hH]*) help_menu
+;;
+[Qq]*)  echo "Quitting the menu program" ; exit 0 
+;;
+[sS]*) settings
+;;
+
+*)      echo "Please choose an option which is displayed on the menu" 
+;;
+esac
+echo ""
+echo "PRESS RETURN FOR THE MENU"
+read dummy
+done
+}
+main_menu
+#=========================================================================
+#=========================================================================
+
+
+

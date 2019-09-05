@@ -1,0 +1,38 @@
+help_menu()
+{
+while true
+do
+clear
+
+cat << "EOT"
+-------------------------------------
+        HELP MENU
+-------------------------------------
+
+Looks obvious the purpose of the project?isn't it?
+
+r )  return to previous menu
+s )  SETTINGS
+
+Please type a choiceletter (from the above choices) then press the RETURN key
+
+EOT
+
+read ANSWER
+clear
+case "$ANSWER" in
+
+[rR]*) main_menu
+;;
+[sS]*) settings
+;;
+
+*)      echo "Please choose an option which is displayed on the menu" 
+;;
+esac
+echo ""
+echo "PRESS RETURN FOR THE MENU"
+read dummy
+done
+
+}

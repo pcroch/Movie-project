@@ -1,0 +1,119 @@
+#########################################
+# 4) delete movie function		#
+#########################################
+
+delete()
+{
+RET=menu_main
+while true
+do
+clear
+#echo " Others menu will be added later for the others levels of the programs when the basic tools  will be viable."
+#r )  return to previous menu
+cat << "EOT"
+-------------------------------------
+        DELETTE MENU
+-------------------------------------
+
+What do you want to do?
+
+a )  Remove a name from the library
+b )  To display the libray
+
+r )  return to previous menu
+s )  SETTINGS
+
+Please type a choiceletter (from the above choices) then press the RETURN key
+
+EOT
+
+read ANSWER
+clear
+case "$ANSWER" in
+#Here we are supposed to call a function to perform the programs
+[aA]*) 
+
+#get the name to delete
+	read -p "Name of the movie? " NAME
+	echo "$NAME"
+        	
+
+		#if name is empty then do again the 'delete function==> infinite loop
+		if [ "${#NAME}" == '0' ] 
+		then
+
+	echo "You have written nothing. Try harder!"
+	echo ""
+  	delete
+		else
+
+ 			if [ "$NAME" = "$(grep -oE "$NAME" "$BOOK")" ]
+			then	
+	read -p "Are you sure? y/n: " ANSWER
+	echo 
+        #echo "$ANSWER"
+
+				if [ "$ANSWER" == 'y' ] 
+        			then
+
+				#Line's number 
+				NUMBER=$(grep -c $NAME $BOOK)
+				#function that removes the lines in the book
+				#echo $NUMBER
+				#Increment the number line but now it is useless
+				#let "NUMBER += 1"
+				mv $BOOK $BOO
+				# Add line numbers and delete against that number 
+				# the ";" caracter is extremely important because it definies the separator for the nl, grep and awk. For grep, I had to use an \ to make ';' as a flag and not a special caracter.
+				nl --number-separator=";" $BOO | grep -v $NUMBER\; | awk -F";" '{print $2}' |  tee $BOOK
+
+				echo 'Movie deleted'   
+        			else
+            			echo 'Movie not deleted'
+				exit
+        			fi
+
+
+			else 
+			echo "That name doesn't exist"
+			display
+				echo " press \"c\" to clear the table"
+				read NUMVAR2
+				if [ "$NUMVAR2" == 'c' ]
+				then
+			clear
+			delete
+				else
+			delete
+				fi
+			fi
+		#test if null see above
+		fi
+
+;;
+[bB]*) display_DB
+	#Display the menu
+		echo ""
+ 	return
+;;
+[rR]*) main_menu
+;;
+[sS]*) settings
+;;
+
+*)      echo "Please choose an option which is displayed on the menu" 
+;;
+esac
+echo ""
+echo "PRESS RETURN FOR THE MENU"
+read dummy
+done
+}
+
+#=========================================================================
+#=========================================================================
+
+
+
+
+

@@ -1,0 +1,15 @@
+#########################################
+# 5) Display the entire table		#
+#########################################
+
+#https://makandracards.com/makandra/38045-bash-print-columns-a-table
+
+display_DB()
+{
+
+#Print the csv file with lines numbers with a predifined length column
+echo "  Name	| Date	|Type	| Rate	"
+cat --number $BOOK | sed 's/\t/,|,/g' | column -s ',' -t
+
+}
+
